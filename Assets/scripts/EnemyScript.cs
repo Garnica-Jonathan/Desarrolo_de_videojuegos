@@ -5,10 +5,11 @@ using UnityEngine.UIElements;
 
 public class EnemyScript : MonoBehaviour
 {
+    public float healt;
     [SerializeField] private string m_myName;
     [SerializeField] private Vector3 movement;
     [SerializeField] private Vector3 direccion;
-    public float healt;
+    private float vida;
     public float speed;
     public float damage;
     
@@ -19,13 +20,9 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         speed = 0;
-        TakeDamage(20);
-
-        ReceiveLife(100);
-
-        MovementDirection(1);
-
-        Dire(1);
+        healt = 100;
+        
+        
 
         m_myName = MyCharacter.GetName();
         /*character.health -= damage - character.defense;*/
@@ -36,34 +33,38 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += speed * movement; 
-        transform.localScale += speed * direccion;   
-        
+        ReceiveLife(1);
+        TakeDamage(1);
+
+        transform.position += movement;
+        transform.localScale += direccion;
+
     }
 
     public void ReceiveLife(float life)
     {
-        healt = life;
+        healt += vida;
+
+        vida = life;
+
+        
     }
 
     public void TakeDamage(float attack)
     {
+        healt -= damage;
+
         damage = attack;
     }
 
-    public void MovementDirection(Vector3 direction)
-    {
-        var movimiento = transform.position += movement;
-
-        movimiento = direction;
+    public void MovementDirection(float direction)
+    {   
         
 
-    }
-    
-    public Vector3 Dire()
-    {
-        var movimiento = transform.position += movement;
-        return movimiento;
+       
+
+
+
     }
 
 }
