@@ -24,8 +24,11 @@ public class EnemyMichelle : MonoBehaviour
         {
             PersuitPlayer();
         }
-        
-        
+
+        if (vida <= 0)
+        {
+            Die(true);
+        }
     }
 
     private void LookPlayer()
@@ -54,6 +57,10 @@ public class EnemyMichelle : MonoBehaviour
             vida= 0;
         }
     }
-
+    
+    private void Die(bool die)
+    {
+        michhelle.SetBool("MichelleBool", die);
+    }
         
 }
