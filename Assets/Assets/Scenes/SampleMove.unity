@@ -979,6 +979,16 @@ PrefabInstance:
       propertyPath: m_camera
       value: 
       objectReference: {fileID: 1740290377}
+    - target: {fileID: 7682844995523616298, guid: 9f21ca72005bc2b4dba21a6511636ba9,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.3291055
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682844995523616298, guid: 9f21ca72005bc2b4dba21a6511636ba9,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.017772794
+      objectReference: {fileID: 0}
     - target: {fileID: 7682844995523616300, guid: 9f21ca72005bc2b4dba21a6511636ba9,
         type: 3}
       propertyPath: Timee

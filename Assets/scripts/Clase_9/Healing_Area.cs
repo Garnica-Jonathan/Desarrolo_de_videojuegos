@@ -39,5 +39,6 @@ public class Healing_Area : MonoBehaviour
             _currentTime = Time.time + TimeToHealt;
             l_trigger.RecibeHealing(HealingAmount);
         }
+        Debug.Log("entro");
     }
 }

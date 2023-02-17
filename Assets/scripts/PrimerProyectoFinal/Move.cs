@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class Move : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float speedRotate;
     [SerializeField] private Animator ramonAnimator;
+    [SerializeField] private CinemachineVirtualCamera terceraPersona;
+    [SerializeField] private CinemachineVirtualCamera primeraPersona;
     // private static readonly int Speed = Animator.StringToHash("Speed");
     
 
@@ -25,6 +28,15 @@ public class Move : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Shoot();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            CameraController(terceraPersona, primeraPersona);
+        }
+        
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CameraController(primeraPersona, terceraPersona);
         }
     }
 
@@ -56,9 +68,12 @@ public class Move : MonoBehaviour
 
     private void Shoot()
     {
-        
             ramonAnimator.SetTrigger("Shoot");
-     
-        
+    }
+
+    private void CameraController(CinemachineVirtualCamera oneCamera, CinemachineVirtualCamera twoCamera)
+    {
+        oneCamera.gameObject.SetActive(true);
+        twoCamera.gameObject.SetActive(false);
     }
 }

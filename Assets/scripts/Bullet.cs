@@ -19,10 +19,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += speed * movimiento;
-        timeDestroy();
-        //transform.localScale += scale * agrandar;
-
+         transform.position += speed * movimiento;
+         timeDestroy();
+         //transform.localScale += scale * agrandar;
+         
         //Enlarge();
 
     }

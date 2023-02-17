@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Bullet_Pistol : MonoBehaviour
 {
-    [SerializeField] private Vector3 movimiento;
     //[SerializeField] private float speed;
     [SerializeField] private float timeDestroy;
-
+    public float damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,4 +26,14 @@ public class Bullet_Pistol : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<EnemyMichelle>(out var l_michelle))
+        {
+            l_michelle.DamageVida(damage);
+        }
+        Debug.Log("la hirio");
+    }
+
 }

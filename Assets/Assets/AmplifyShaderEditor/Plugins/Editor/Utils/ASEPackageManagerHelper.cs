@@ -382,7 +382,7 @@ namespace AmplifyShaderEditor
 			AssetDatabase.importPackageCompleted += CompletedPackageImport;
 			AssetDatabase.importPackageFailed += FailedPackageImport;
 			AssetDatabase.ImportPackage( packagePath, false );
-			//AssetDatabaseEX.ImportPackageImmediately( packagePath );
+			AssetDatabaseEX.ImportPackageImmediately( packagePath );
 		}
 
 		public static void FinishImporter()
