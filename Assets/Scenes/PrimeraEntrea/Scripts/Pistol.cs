@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.XR;
 
 
 public enum Change
@@ -10,12 +13,22 @@ public enum Change
 }
 public class Pistol : MonoBehaviour
 {
-    //[SerializeField] private GameObject Bullet_Pistol;
+    //parte del Raycast
+    [SerializeField] private Transform eyes;
+    [SerializeField] private float distance;
+    [SerializeField] private LayerMask layer;
+
+
+
     [SerializeField] private Bullet_Pistol bullet_Pistol;
     [SerializeField] private Transform empty;
     [SerializeField] private Change speedchange;
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
+    [SerializeField] Transform arma;
+    
+
+
 
 
     private float shotRateTime = 0;
@@ -29,6 +42,9 @@ public class Pistol : MonoBehaviour
     void Update()
     {
         Switch();
+        //GunTime();
+        Debug.DrawRay(arma.position, arma.forward * 100f, Color.blue);
+
     }
 
     private void Shoot()
@@ -45,9 +61,9 @@ public class Pistol : MonoBehaviour
             case Change.speedPistol:
                 VelocityChange();
                 break;
-            case Change.gunWithTime:
+            /*case Change.gunWithTime:
                 GunTime();
-                break;
+                break;*/
         }
     }
     private void GunTime()
@@ -64,10 +80,52 @@ public class Pistol : MonoBehaviour
     }
     private void VelocityChange()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Shoot();
+            //Shoot();
+            CreateRaycast();
         }
-            
+
     }
+    private void CreateRaycast()
+    {
+         RaycastHit hitInfo;
+         var raycast = Physics.Raycast(eyes.position, eyes.forward, out hitInfo, distance, layer);
+
+        if (raycast)
+        {
+
+            //Quita daño a Michelle
+            EnemyMichelle enemy = hitInfo.transform.GetComponent<EnemyMichelle>();
+            if (enemy != null)
+            {
+                enemy.DamageVida(10);
+            }
+
+
+            /*var l_boxRigidBody = hitInfo.rigidbody;
+            if (l_boxRigidBody != null)
+            {
+                l_boxRigidBody.AddExplosionForce(exosionForce, hitInfo.point, radiusExplosion);
+            }*/
+
+
+            // Para hacerle daño a Michelle(No Funciona), no me instancia el prefap bullet_psitol
+            /*hitInfo.transform.GetComponent<EnemyMichelle>().DamageVida(10);
+            Instantiate(bullet_Pistol, hitInfo.point, Quaternion.identity);*/
+
+
+
+            //para destruir directamente al Object
+
+            //Destroy(hitInfo.transform.gameObject);
+        Debug.Log($"chocaste en{hitInfo.collider}");
+        }
+        else
+        {
+            Debug.Log("no hay nada");
+        }
+    }
+
+
 }

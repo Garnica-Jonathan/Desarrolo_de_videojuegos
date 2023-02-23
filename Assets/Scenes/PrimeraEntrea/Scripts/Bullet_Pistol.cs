@@ -33,7 +33,7 @@ public class Bullet_Pistol : MonoBehaviour
         {
             l_michelle.DamageVida(damage);
         }
-        Debug.Log("la hirio");
+       
     }
 
 }

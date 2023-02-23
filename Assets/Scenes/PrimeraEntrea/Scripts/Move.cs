@@ -1,6 +1,8 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -10,6 +12,9 @@ public class Move : MonoBehaviour
     [SerializeField] private Animator ramonAnimator;
     [SerializeField] private CinemachineVirtualCamera terceraPersona;
     [SerializeField] private CinemachineVirtualCamera primeraPersona;
+    [SerializeField] private Transform cameraAnchor = null;
+
+    
     // private static readonly int Speed = Animator.StringToHash("Speed");
     
 
@@ -26,7 +31,7 @@ public class Move : MonoBehaviour
         Rotate(GetRotationInput());
         MoveCharacter(GetMovementInput());
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             Shoot();
         }
@@ -39,11 +44,18 @@ public class Move : MonoBehaviour
         {
             CameraController(primeraPersona, terceraPersona);
         }
+        
+        
     }
 
     private void Rotate(Vector2 l_rotate)
     {
         transform.Rotate(Vector3.up, l_rotate.x * speedRotate * Time.deltaTime, Space.Self);
+
+        Vector3 angle = cameraAnchor.eulerAngles;
+        angle.x += l_rotate.y * speedRotate * Time.deltaTime;
+        cameraAnchor.eulerAngles = angle;
+        
     }
     private Vector2 GetRotationInput()
     {
@@ -51,6 +63,8 @@ public class Move : MonoBehaviour
         var l_mouseX = Input.GetAxis("Mouse X");
         return new Vector2(l_mouseX, l_mouseY);
     }
+
+
     private Vector3 GetMovementInput()
     {
         var l_horizontal = Input.GetAxis("Horizontal");
@@ -77,4 +91,6 @@ public class Move : MonoBehaviour
         oneCamera.gameObject.SetActive(true);
         twoCamera.gameObject.SetActive(false);
     }
+
+    
 }
