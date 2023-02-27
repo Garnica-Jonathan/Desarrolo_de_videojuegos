@@ -2,6 +2,7 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -35,16 +36,11 @@ public class Move : MonoBehaviour
         {
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.C) )
         {
-            CameraController(terceraPersona, primeraPersona);
+            SwitchCamera();
         }
-        
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            CameraController(primeraPersona, terceraPersona);
-        }
-        
+
         
     }
 
@@ -86,11 +82,26 @@ public class Move : MonoBehaviour
             ramonAnimator.SetTrigger("Shoot");
     }
 
-    private void CameraController(CinemachineVirtualCamera oneCamera, CinemachineVirtualCamera twoCamera)
+    //private void CameraController(CinemachineVirtualCamera oneCamera, CinemachineVirtualCamera twoCamera)
+    //{
+    //    oneCamera.gameObject.SetActive(true);
+    //    twoCamera.gameObject.SetActive(false);
+    //}
+
+    private void SwitchCamera()
     {
-        oneCamera.gameObject.SetActive(true);
-        twoCamera.gameObject.SetActive(false);
+        if (primeraPersona.gameObject.activeSelf)
+        {
+            terceraPersona.gameObject.SetActive(true);
+            primeraPersona.gameObject.SetActive(false);
+        }
+        else
+        {
+            primeraPersona.gameObject.SetActive(true);
+            terceraPersona.gameObject.SetActive(false);
+        }
+
     }
 
-    
+
 }
