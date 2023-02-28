@@ -14,6 +14,7 @@ public class Move : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera terceraPersona;
     [SerializeField] private CinemachineVirtualCamera primeraPersona;
     [SerializeField] private Transform cameraAnchor = null;
+    [SerializeField] private Transform cameraAnchorr = null;
 
     
     // private static readonly int Speed = Animator.StringToHash("Speed");
@@ -22,7 +23,7 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-          
+        GameManager.LookCursor();
 
     }
 
@@ -51,7 +52,11 @@ public class Move : MonoBehaviour
         Vector3 angle = cameraAnchor.eulerAngles;
         angle.x += l_rotate.y * speedRotate * Time.deltaTime;
         cameraAnchor.eulerAngles = angle;
-        
+
+        Vector3 anglee = cameraAnchorr.eulerAngles;
+        anglee.x += l_rotate.y * speedRotate * Time.deltaTime;
+        cameraAnchorr.eulerAngles = angle;
+
     }
     private Vector2 GetRotationInput()
     {

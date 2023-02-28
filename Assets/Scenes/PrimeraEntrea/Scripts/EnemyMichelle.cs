@@ -11,6 +11,7 @@ public class EnemyMichelle : MonoBehaviour
     [SerializeField] private float persuit;
     [SerializeField] private float persuitDistance;
     [SerializeField] private bool killer;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +61,9 @@ public class EnemyMichelle : MonoBehaviour
     
     private void Die(bool die)
     {
+        GameManager.instance.AddEnemyKills();
         michhelle.SetBool("MichelleBool", die);
+        Destroy(gameObject);
     }
         
 }
