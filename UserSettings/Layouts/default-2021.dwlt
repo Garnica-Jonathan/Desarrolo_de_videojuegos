@@ -43,7 +43,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Scene
   m_RootView: {fileID: 5}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 221}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 56
+  controlID: 17
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -195,7 +195,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 300}
   m_MaxSize: {x: 32384, y: 24288}
   vertical: 0
-  controlID: 25939
+  controlID: 162
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 300}
   m_MaxSize: {x: 8096, y: 24288}
   vertical: 1
-  controlID: 25940
+  controlID: 163
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -241,8 +241,8 @@ MonoBehaviour:
     y: 0
     width: 1064
     height: 562
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
   m_Panes:
   - {fileID: 18}
@@ -267,8 +267,8 @@ MonoBehaviour:
     y: 562
     width: 1064
     height: 285
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
   - {fileID: 19}
@@ -319,8 +319,8 @@ MonoBehaviour:
     y: 0
     width: 297
     height: 947
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -371,8 +371,8 @@ MonoBehaviour:
     y: 0
     width: 301
     height: 947
-  m_MinSize: {x: 275, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 22}
   m_Panes:
   - {fileID: 22}
@@ -759,9 +759,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 15.781544, y: -3.1280937, z: -0.37893105}
+    m_Target: {x: -5.1500893, y: 5.094976, z: 0.1439546}
     speed: 2
-    m_Value: {x: 15.781544, y: -3.1280937, z: -0.37893105}
+    m_Value: {x: -5.1500893, y: 5.094976, z: 0.1439546}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -808,13 +808,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.21661808, y: -0.60293776, z: 0.17473054, w: -0.7478091}
+    m_Target: {x: -0.11304795, y: -0.5512983, z: 0.07577042, w: -0.82326543}
     speed: 2
-    m_Value: {x: -0.21824275, y: -0.6003678, z: 0.17496291, w: -0.74921066}
+    m_Value: {x: -0.11449942, y: -0.5486528, z: 0.076246075, w: -0.8246554}
   m_Size:
-    m_Target: 12.034916
+    m_Target: 0.013062456
     speed: 2
-    m_Value: 12.034916
+    m_Value: 0.013062456
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -832,7 +832,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: 0.043216277, y: 0.22055186, z: -0.009782174, w: 0.97437185}
+  m_LastSceneViewRotation: {x: -0.06609805, y: -0.50029147, z: 0.038382217, w: -0.8626026}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1023,9 +1023,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 50acfcff
-      m_LastClickedID: -218032
-      m_ExpandedIDs: 728afdff0c81ffff1497fffffce10000fee100002ee2000040e200006ce20000d2e200002ce30000aae30000aee30000bee30000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 28e9fafff814fbfffa9cfbff42c5fbff9434fcffc2b7fdff16fbffffd46d0000d66d0000186e0000446e0000aa6e0000f26e0000046f0000826f0000866f0000966f0000d2c10000c4c2000068c30000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1041,7 +1041,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 13}
+        m_ClientGUIView: {fileID: 3}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1091,7 +1091,7 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes/PrimeraEntrea/EnemigoComun
+    - Assets/Scenes/PrimeraEntrea/Prefab
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -1106,7 +1106,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 3a880000
     m_LastClickedID: 34874
-    m_ExpandedIDs: ffffffff000000000ee1000030e100003ce1000046e10000060001009e940100
+    m_ExpandedIDs: 0000000026790000287900002a7900002c7900002e79000030790000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1134,7 +1134,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff000000000ee1000030e100003ce1000046e10000060001009e940100
+    m_ExpandedIDs: ffffffff0000000026790000287900002a7900002c7900002e79000030790000e67a0000ec7a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

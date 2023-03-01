@@ -26,12 +26,12 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         totalKills = enemyContainer.GetComponentsInChildren<EnemyMichelle>().Length;
-        totalEnemykilled.text = " Enemigos Totales" + totalKills.ToString();
+        totalEnemykilled.text = " Enemigos Totales: " + totalKills.ToString();
     }
     public void AddEnemyKills()
     {
         totalKills--;
-        totalEnemykilled.text = " Enemigos Totales" + totalKills.ToString();
+        totalEnemykilled.text = " Enemigos Totales: " + totalKills.ToString();
     }
     public static void LookCursor()
     {
