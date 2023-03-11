@@ -2,31 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMichelle : MonoBehaviour
+public class EnemyMichelle : Entity
 {
-    [SerializeField] private Animator michhelle;
-    [SerializeField] private float vida = 100;
+    [SerializeField] protected EnemyData m_EnemyData;
+    [SerializeField] private Animator michhelle; 
     [SerializeField] private Transform ramon;
-    [SerializeField] private float speedLook;
-    [SerializeField] private float persuit;
-    [SerializeField] private float persuitDistance;
+    //[SerializeField] private float speedLook = 10;
+    //[SerializeField] private float persuit = 2;
+    //[SerializeField] private float persuitDistance = 2;
     [SerializeField] private bool killer;
-    
+    public float current;
+
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         
+    }
+    void Start()
+    {
+        current = m_maxHealt;
+        m_EnemyData = GetComponent<EnemyData>();//me pone GetComponent requires that the requested component 'EnemyData' derives from MonoBehaviour or Component or is an interface.
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!killer && vida > 0)
+        if (!killer && current > 0)
         {
             PersuitPlayer();
         }
 
-        if (vida <= 0)
+        if (current <= 0)
         {
             Die(true);
         }
@@ -36,7 +42,7 @@ public class EnemyMichelle : MonoBehaviour
     {
         var positionPlayer = ramon.position - transform.position;
         var lookPlayer = Quaternion.LookRotation(positionPlayer);
-        transform.rotation = Quaternion.Lerp(transform.rotation, lookPlayer, (speedLook * Time.deltaTime));
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookPlayer, (m_EnemyData.speedLook * Time.deltaTime));
     }
 
     private void PersuitPlayer()
@@ -44,18 +50,18 @@ public class EnemyMichelle : MonoBehaviour
         LookPlayer();
         var positionPlayer = ramon.position - transform.position;
         var distancePlayer = positionPlayer.magnitude;
-        if (distancePlayer > persuitDistance)
+        if (distancePlayer > m_EnemyData.persuitDistance)
         {
-            transform.position = Vector3.MoveTowards(transform.position, ramon.position, persuit * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, ramon.position, m_EnemyData.persuit * Time.deltaTime);
         }
     }
 
     public void DamageVida(float damage)
     {
-        vida -= damage;
-        if (vida <=0)
+        current -= damage;
+        if (current <= 0)
         {
-            vida= 0;
+            current = 0;
         }
     }
     

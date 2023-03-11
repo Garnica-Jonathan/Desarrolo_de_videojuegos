@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public Text totalEnemykilled;
+    public TMP_Text totalEnemykilled;
     public int totalKills;
     public GameObject enemyContainer;
 
