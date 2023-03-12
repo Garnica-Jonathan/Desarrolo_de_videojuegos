@@ -3,14 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class JumpRaycast : MonoBehaviour
+public class JumpRaycast : CharacterMain
 {
     [SerializeField] private Rigidbody rg;
     [SerializeField] private float forceJump;
     [SerializeField] private float distance;
     [SerializeField] private LayerMask layerFloor;
     [SerializeField] private bool floor;
+    
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         
@@ -19,21 +25,15 @@ public class JumpRaycast : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        RaicastJump();
-        if (Input.GetKeyDown(KeyCode.Space) && floor)
-        {
-            Jump();
-        }
-        Debug.DrawRay(transform.position, Vector3.down * distance, Color.green);
+
+        MoveAndJump();
     }
 
-    private void Jump()
+    protected void MoveAndJump()
     {
-        rg.AddForce(Vector3.up * forceJump, ForceMode.Impulse);
-
+        AllInOne();
+        RaicastJump();
     }
-
     private void RaicastJump()
     {
         RaycastHit hitJump;
@@ -48,5 +48,18 @@ public class JumpRaycast : MonoBehaviour
         {
             floor = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && floor)
+        {
+            Jump();
+        }
+        Debug.DrawRay(transform.position, Vector3.down * distance, Color.green);
     }
+
+    private void Jump()
+    {
+        rg.AddForce(Vector3.up * forceJump, ForceMode.Impulse);
+
+    }
+
 }

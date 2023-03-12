@@ -5,57 +5,76 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEditor.UIElements;
 using UnityEngine;
+using static Unity.Burst.Intrinsics.X86;
 
-public class Move : MonoBehaviour
+public class CharacterMain : Entity
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float speedRotate;
+    [SerializeField] protected CharacterData characterData;
+    //[SerializeField] private float speedRotate = 45;
     [SerializeField] private Animator ramonAnimator;
     [SerializeField] private CinemachineVirtualCamera terceraPersona;
     [SerializeField] private CinemachineVirtualCamera primeraPersona;
     [SerializeField] private Transform cameraAnchor = null;
-    [SerializeField] private Transform cameraAnchorr = null;
+    [SerializeField] private Transform cameraAnchorTwo = null;
+    public bool isSprinting;
+    [SerializeField] private float sprintingSpeed = 3f;
+    private float sprintSpeed = 1;
+    [SerializeField] private float stamineUseAmount = 5;
+    private Stamina staminaSlider;
+    
 
-    
+
     // private static readonly int Speed = Animator.StringToHash("Speed");
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
+        characterData = GetComponent<CharacterData>();
         GameManager.LookCursor();
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        AllInOne();
+
+    }
+    protected void AllInOne()
+    {
         Rotate(GetRotationInput());
         MoveCharacter(GetMovementInput());
 
+        ShootAndCamera();
+
+        RunCheck();
+    }
+
+    private void ShootAndCamera()
+    {
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             Shoot();
         }
-        if (Input.GetKeyDown(KeyCode.C) )
+        if (Input.GetKeyDown(KeyCode.C))
         {
             SwitchCamera();
         }
-
         
     }
-
     private void Rotate(Vector2 l_rotate)
     {
-        transform.Rotate(Vector3.up, l_rotate.x * speedRotate * Time.deltaTime, Space.Self);
+        transform.Rotate(Vector3.up, l_rotate.x * characterData.speedRotate * Time.deltaTime, Space.Self);
 
         Vector3 angle = cameraAnchor.eulerAngles;
-        angle.x += l_rotate.y * speedRotate * Time.deltaTime;
+        angle.x += l_rotate.y * characterData.speedRotate * Time.deltaTime;
         cameraAnchor.eulerAngles = angle;
 
-        Vector3 anglee = cameraAnchorr.eulerAngles;
-        anglee.x += l_rotate.y * speedRotate * Time.deltaTime;
-        cameraAnchorr.eulerAngles = angle;
+        Vector3 anglee = cameraAnchorTwo.eulerAngles;
+        anglee.x += l_rotate.y * characterData.speedRotate * Time.deltaTime;
+        cameraAnchorTwo.eulerAngles = angle;
 
     }
     private Vector2 GetRotationInput()
@@ -77,7 +96,7 @@ public class Move : MonoBehaviour
     {
         var transform1 = transform;
         transform1.position += (p_movement.z * transform1.forward + p_movement.x* transform1.right) *
-                                (speed * Time.deltaTime);
+                                (characterData.Speed * Time.deltaTime) * sprintSpeed;
         ramonAnimator.SetFloat("Speed", p_movement.magnitude);
 
     }
@@ -108,5 +127,30 @@ public class Move : MonoBehaviour
 
     }
 
+    private void RunCheck()
+    {
+        staminaSlider = GetComponent<Stamina>();
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isSprinting = !isSprinting;
 
+            if (isSprinting == true)
+            {
+                staminaSlider.UseStamina(stamineUseAmount);
+            }
+            else
+            {
+                staminaSlider.UseStamina(0);
+            }
+        }
+
+        if (isSprinting == true)
+        {
+            sprintSpeed = sprintingSpeed;
+        }
+        else
+        {
+            sprintSpeed = 1;
+        }
+    }
 }
