@@ -64,7 +64,7 @@ public class CharacterMain : Entity
         }
         
     }
-    protected void Rotate(Vector2 l_rotate)
+    private void Rotate(Vector2 l_rotate)
     {
         transform.Rotate(Vector3.up, l_rotate.x * characterData.speedRotate * Time.deltaTime, Space.Self);
 
@@ -77,7 +77,7 @@ public class CharacterMain : Entity
         cameraAnchorTwo.eulerAngles = angle;
 
     }
-    protected Vector2 GetRotationInput()
+    private Vector2 GetRotationInput()
     {
         var l_mouseY = Input.GetAxis("Mouse Y");
         var l_mouseX = Input.GetAxis("Mouse X");
@@ -85,14 +85,14 @@ public class CharacterMain : Entity
     }
 
 
-    protected Vector3 GetMovementInput()
+    private Vector3 GetMovementInput()
     {
         var l_horizontal = Input.GetAxis("Horizontal");
         var l_vertical = Input.GetAxis("Vertical");
 
         return new Vector3(l_horizontal,0,l_vertical).normalized;
     }
-    protected void MoveCharacter(Vector3 p_movement)
+    private void MoveCharacter(Vector3 p_movement)
     {
         var transform1 = transform;
         transform1.position += (p_movement.z * transform1.forward + p_movement.x* transform1.right) *
@@ -101,7 +101,7 @@ public class CharacterMain : Entity
 
     }
 
-    protected void Shoot()
+    private void Shoot()
     {
             ramonAnimator.SetTrigger("Shoot");
     }
@@ -112,7 +112,7 @@ public class CharacterMain : Entity
     //    twoCamera.gameObject.SetActive(false);
     //}
 
-    protected void SwitchCamera()
+    private void SwitchCamera()
     {
         if (primeraPersona.gameObject.activeSelf)
         {
