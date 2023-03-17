@@ -2,13 +2,17 @@ using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Rendering;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 using static Unity.Burst.Intrinsics.X86;
 
 public class CharacterMain : Entity
 {
+    [SerializeField] private Volume posst;
     [SerializeField] protected CharacterData characterData;
     //[SerializeField] private float speedRotate = 45;
     [SerializeField] private Animator ramonAnimator;
@@ -21,11 +25,14 @@ public class CharacterMain : Entity
     private float sprintSpeed = 1;
     [SerializeField] private float stamineUseAmount = 5;
     private Stamina staminaSlider;
-    
+
 
 
     // private static readonly int Speed = Animator.StringToHash("Speed");
-
+    private void Awake()
+    {
+        
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -129,17 +136,28 @@ public class CharacterMain : Entity
 
     private void RunCheck()
     {
+        var post = posst.profile;
         staminaSlider = GetComponent<Stamina>();
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            
+           
             isSprinting = !isSprinting;
 
             if (isSprinting == true)
             {
+                if (post.TryGet(out LensDistortion lens))
+                {
+                    lens.intensity.value = -0.66f;
+                }
                 staminaSlider.UseStamina(stamineUseAmount);
             }
             else
             {
+                if (post.TryGet(out LensDistortion lens))
+                {
+                    lens.intensity.value = 0;
+                }
                 staminaSlider.UseStamina(0);
             }
         }
